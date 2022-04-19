@@ -1,6 +1,9 @@
 import random
-word_bank = ["patna", "paris","toronto","london"]
-word_to_guess = random.choice(word_bank)
+#import hangman_word_list
+#word_to_guess = random.choice(hangman_word_list.word_list)
+from hangman_word_list import word_list
+word_to_guess = random.choice(word_list)
+
 print(word_to_guess)
 underscore = '_'
 guess_word = []
