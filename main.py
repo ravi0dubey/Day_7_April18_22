@@ -20,12 +20,17 @@ for i in range(0,len(word_to_guess)):
 print(guess_word)
 final_guess = ' '
 end_of_game = False
+
 while not (end_of_game):
   letter= input("Enter the letter: ").lower()
-  letter_list = []
+  for char in guess_word:
+    if(char== letter):
+      print(f"You have already guessed this letter: {letter}")
+  
   
   # approach 1 Use for loop to  search the  position in word_to_Guess where entered letter exist
   #for pos,char in enumerate(word_to_guess):
+    #letter_list = [] 
     #if(char == letter):
       #letter_list.append(pos)   
       #for i in range(0,len(letter_list)):
@@ -34,7 +39,6 @@ while not (end_of_game):
     #life_chance -= 1
     #print(f"life_Left1 : {life_chance}")
   
-
     # approach 2  Loop through the word_to guess and match it wih entered letter value 
   letter_found = " "  
   for i in range(0,len(word_to_guess)):   
@@ -55,7 +59,7 @@ while not (end_of_game):
   final_guess = ' ' 
   for char in guess_word:
         final_guess += char
-  print(f"Final_Guess: {final_guess}")
+  print(f"Your_Guess: {final_guess}")
   
   if underscore not in final_guess:
     end_of_game = True
