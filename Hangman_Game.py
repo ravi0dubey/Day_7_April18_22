@@ -1,9 +1,14 @@
 import random
+# 1st way of importing module 
 #import hangman_word_list
 #word_to_guess = random.choice(hangman_word_list.word_list)
+
+# 2nd way of importing module 
 from hangman_word_list import word_list
 word_to_guess = random.choice(word_list)
 
+from hangman_art import logo, stages
+print(logo)
 print(word_to_guess)
 underscore = '_'
 guess_word = []
@@ -40,6 +45,7 @@ while not (end_of_game):
       
   if(letter_found != "Y"):
     life_chance -= 1
+    print(stages[life_chance])
     if(life_chance == 0):
       end_of_game = True
     else:
