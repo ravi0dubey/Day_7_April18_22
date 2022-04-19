@@ -2,38 +2,54 @@ import random
 word_bank = ["patna", "paris","toronto","london"]
 word_to_guess = random.choice(word_bank)
 print(word_to_guess)
-letter = '_'
+underscore = '_'
 guess_word = []
 life_chance = 6
 
 for i in range(0,len(word_to_guess)):
-  guess_word.insert(i,letter)
+  guess_word.insert(i,underscore)
  
 print(guess_word)
 final_guess = ' '
-
-while not (final_guess == word_to_guess):
+end_of_game = False
+while not (end_of_game):
   letter= input("Enter the letter: ").lower()
   letter_list = []
-  for pos,char in enumerate(word_to_guess):
-    if(char == letter):
-      letter_list.append(pos)   
-      for i in range(0,len(letter_list)):
-        #print(f"Letter List : {letter_list}")
-        #print(f"Length of Letter_list: {len(letter_list)}")
-       
-        guess_word[pos] = letter
-       # print(f"Guess Word : {guess_word}")
+  
+  # approach 1 Use for loop to  search the  position in word_to_Guess where entered letter exist
+  #for pos,char in enumerate(word_to_guess):
+    #if(char == letter):
+      #letter_list.append(pos)   
+      #for i in range(0,len(letter_list)):
+        #guess_word[pos] = letter   
+  #if(len(letter_list) == 0):
+    #life_chance -= 1
+    #print(f"life_Left1 : {life_chance}")
+  
 
-  if(len(letter_list) == 0):
+    # approach 2  Loop through the word_to guess and match it wih entered letter value 
+  letter_found = " "  
+  for i in range(0,len(word_to_guess)):   
+    char = word_to_guess[i]
+    if(char == letter):
+      guess_word[i] = letter  
+      letter_found = "Y"
+      
+  if(letter_found != "Y"):
     life_chance -= 1
-    print(f"life_Left : {life_chance}")
+    if(life_chance == 0):
+      end_of_game = True
+    else:
+      print(f"life_Left : {life_chance}")
+
   
   final_guess = ' ' 
   for char in guess_word:
         final_guess += char
   print(f"Final_Guess: {final_guess}")
-  print(f"Word to Guess: {word_to_guess}")
+  
+  if underscore not in final_guess:
+    end_of_game = True
 
 
 if(word_to_guess == final_guess):
